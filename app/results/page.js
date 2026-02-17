@@ -30,7 +30,6 @@ export default function ResultsPage() {
     else if (pct >= 60) { grade = 'C'; gradeClass = 'grade-c'; }
     else { grade = 'F'; gradeClass = 'grade-f'; }
 
-    // Save to Firestore
     useEffect(() => {
         if (user && quizFinished && total > 0 && !savedRef.current) {
             savedRef.current = true;
@@ -48,7 +47,6 @@ export default function ResultsPage() {
         }
     }, [user, quizFinished, total, difficulty, correct, pct, grade, bestStreak, answers]);
 
-    // Redirect if no results
     useEffect(() => {
         if (!quizFinished || total === 0) {
             router.replace('/');
@@ -61,7 +59,6 @@ export default function ResultsPage() {
         <section className="screen active" id="results">
             <div className="results-content">
                 <div className="results-two-col">
-                    {/* LEFT */}
                     <motion.div className="results-left" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                         <div className="results-header">
                             <motion.div
@@ -97,7 +94,6 @@ export default function ResultsPage() {
                         </div>
                     </motion.div>
 
-                    {/* RIGHT */}
                     <motion.div className="results-right" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
                         <h3 className="review-title">📝 Question Review</h3>
                         <div className="results-review">

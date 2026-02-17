@@ -40,7 +40,6 @@ export default function CRTOverlay() {
         }
         renderLoop();
 
-        // Glitch bars
         const bar = glitchRef.current;
         let glitchTimeout;
         function triggerGlitch() {
@@ -60,7 +59,6 @@ export default function CRTOverlay() {
         }
         glitchTimeout = setTimeout(triggerGlitch, 1000 + Math.random() * 3000);
 
-        // Heavy static bursts
         let burstTimeout;
         function burst() {
             canvas.style.opacity = '0.15';

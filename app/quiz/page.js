@@ -16,21 +16,18 @@ export default function QuizPage() {
     } = useQuiz();
     const [showExplanation, setShowExplanation] = useState(false);
 
-    // Redirect if no active quiz
     useEffect(() => {
         if (!quizActive && !quizFinished) {
             router.replace('/difficulty');
         }
     }, [quizActive, quizFinished, router]);
 
-    // Redirect to results on finish
     useEffect(() => {
         if (quizFinished) {
             router.push('/results');
         }
     }, [quizFinished, router]);
 
-    // Timer
     useEffect(() => {
         if (!quizActive || answered) return;
         const interval = setInterval(() => {
@@ -39,14 +36,12 @@ export default function QuizPage() {
         return () => clearInterval(interval);
     }, [quizActive, answered, tick]);
 
-    // Timeout check
     useEffect(() => {
         if (timeLeft <= 0 && quizActive && !answered) {
             timeout();
         }
     }, [timeLeft, quizActive, answered, timeout]);
 
-    // Reset explanation on question change
     useEffect(() => {
         setShowExplanation(false);
     }, [currentIndex]);
@@ -62,7 +57,6 @@ export default function QuizPage() {
     const diffLabel = difficulty ? difficulty.charAt(0).toUpperCase() + difficulty.slice(1) : '';
     const answer = answered ? (questions[currentIndex] ? {
         selected: (() => {
-            // Find the answer for current question
             const ans = document.querySelectorAll ? null : null;
             return null;
         })()
@@ -110,7 +104,6 @@ export default function QuizPage() {
                                 if (answered) {
                                     cls += ' disabled';
                                     if (i === q.correctAnswer) cls += ' correct';
-                                    // find selected from context
                                 }
                                 return (
                                     <motion.button
