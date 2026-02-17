@@ -2,6 +2,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { QuizProvider } from '@/context/QuizContext';
 import CRTOverlay from '@/components/CRTOverlay';
 import Navbar from '@/components/Navbar';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 export const metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
             </main>
           </QuizProvider>
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
