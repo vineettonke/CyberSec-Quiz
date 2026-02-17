@@ -15,6 +15,8 @@ export default function ResultsPage() {
     const { user } = useAuth();
     const [saved, setSaved] = useState(false);
     const savedRef = useRef(false);
+    const [showExplanations, setShowExplanations] = useState({});
+    const toggleExplanation = (idx) => setShowExplanations(prev => ({ ...prev, [idx]: !prev[idx] }));
 
     const total = questions.length;
     const correct = answers.filter(a => a.correct).length;
@@ -54,10 +56,8 @@ export default function ResultsPage() {
         }
     }, [quizFinished, total, router]);
 
-    if (!quizFinished || total === 0) return null;
 
-    const [showExplanations, setShowExplanations] = useState({});
-    const toggleExplanation = (idx) => setShowExplanations(prev => ({ ...prev, [idx]: !prev[idx] }));
+    if (!quizFinished || total === 0) return null;
 
     return (
         <section id="results" className="screen active">
