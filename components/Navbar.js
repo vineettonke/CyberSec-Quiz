@@ -25,10 +25,10 @@ export default function Navbar() {
                                     <span>History</span>
                                 </Link>
                                 <div className="nav-user">
-                                    {user.photoURL && (
-                                        <img src={user.photoURL} alt="" className="nav-avatar" referrerPolicy="no-referrer" />
+                                    {user.user_metadata?.avatar_url && (
+                                        <img src={user.user_metadata.avatar_url} alt="" className="nav-avatar" referrerPolicy="no-referrer" />
                                     )}
-                                    <span className="nav-name">{user.displayName?.split(' ')[0]}</span>
+                                    <span className="nav-name">{user.user_metadata?.full_name?.split(' ')[0]}</span>
                                 </div>
                                 <button onClick={signOut} className="nav-btn nav-btn-out" title="Sign out">
                                     <HiOutlineLogout size={18} />
