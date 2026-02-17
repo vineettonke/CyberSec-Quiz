@@ -41,7 +41,7 @@ export default function ResultsPage() {
                 percentage: pct,
                 grade,
                 bestStreak,
-                answers: answers.map(a => ({ questionId: a.questionId, correct: a.correct, skipped: a.skipped })),
+                answers: answers.map(a => ({ questionId: a.questionId, selected: a.selected, correct: a.correct, skipped: a.skipped })),
                 createdAt: serverTimestamp(),
             }).then(() => setSaved(true)).catch(console.error);
         }

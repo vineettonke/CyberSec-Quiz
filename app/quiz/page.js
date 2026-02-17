@@ -11,7 +11,7 @@ export default function QuizPage() {
     const router = useRouter();
     const {
         questions, currentIndex, score, streak, difficulty,
-        timeLeft, answered, quizActive, quizFinished,
+        timeLeft, answered, quizActive, quizFinished, answers,
         answerQuestion, nextQuestion, timeout, tick,
     } = useQuiz();
     const [showExplanation, setShowExplanation] = useState(false);
@@ -55,12 +55,7 @@ export default function QuizPage() {
     const q = questions[currentIndex];
     const progress = (currentIndex / questions.length) * 100;
     const diffLabel = difficulty ? difficulty.charAt(0).toUpperCase() + difficulty.slice(1) : '';
-    const answer = answered ? (questions[currentIndex] ? {
-        selected: (() => {
-            const ans = document.querySelectorAll ? null : null;
-            return null;
-        })()
-    } : null) : null;
+    const currentAnswer = answers[currentIndex];
 
     return (
         <section className="screen active quiz-screen-wrapper">
@@ -101,9 +96,10 @@ export default function QuizPage() {
                         <div className="options-grid">
                             {q.options.map((opt, i) => {
                                 let cls = 'option-btn';
-                                if (answered) {
+                                if (answered && currentAnswer) {
                                     cls += ' disabled';
                                     if (i === q.correctAnswer) cls += ' correct';
+                                    if (i === currentAnswer.selected && !currentAnswer.correct) cls += ' wrong';
                                 }
                                 return (
                                     <motion.button
