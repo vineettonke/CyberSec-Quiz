@@ -346,8 +346,7 @@ body {
     font-family: var(--font-mono);
     font-size: clamp(2rem, 6vw, 3.5rem);
     font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-cyan) 50%, var(--neon-purple) 100%);
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -371,68 +370,78 @@ body {
 
 .glitch-text::before {
     animation: glitchLeft 3s infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-    opacity: 0.08;
+    clip-path: inset(0 0 65% 0);
 }
 
 .glitch-text::after {
     animation: glitchRight 2.5s infinite;
-    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-    opacity: 0.08;
+    clip-path: inset(60% 0 0 0);
 }
 
 @keyframes glitchShift {
 
     0%,
-    94%,
+    90%,
     100% {
         transform: translate(0);
     }
 
-    95% {
+    92% {
         transform: translate(-2px, 1px);
     }
 
-    96% {
+    94% {
         transform: translate(2px, -1px);
     }
 
-    97% {
-        transform: translate(-1px, 2px);
+    96% {
+        transform: translate(-1px, -1px);
+    }
+
+    98% {
+        transform: translate(1px, 1px);
     }
 }
 
 @keyframes glitchLeft {
 
     0%,
-    90%,
+    88%,
     100% {
-        transform: translateX(0);
+        transform: translate(0);
+    }
+
+    90% {
+        transform: translate(-4px, 0);
     }
 
     92% {
-        transform: translateX(-4px);
+        transform: translate(3px, 0);
     }
 
     94% {
-        transform: translateX(2px);
+        transform: translate(-2px, 0);
     }
 }
 
 @keyframes glitchRight {
 
     0%,
-    88%,
+    85%,
     100% {
-        transform: translateX(0);
+        transform: translate(0);
     }
 
-    90% {
-        transform: translateX(4px);
+    87% {
+        transform: translate(3px, 0);
     }
 
-    93% {
-        transform: translateX(-3px);
+    89% {
+        transform: translate(-4px, 0);
+    }
+
+    91% {
+        transform: translate(2px, 0);
     }
 }
 
