@@ -3,6 +3,7 @@ import { QuizProvider } from '@/context/QuizContext';
 import CRTOverlay from '@/components/CRTOverlay';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 
 export const metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           </QuizProvider>
         </AuthProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
